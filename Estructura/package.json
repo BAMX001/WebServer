@@ -1,0 +1,15 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "description": "login",
+  "main": "login.js",
+  "scripts": {
+    "test": "echo 'Error: no test'"
+  },
+  "keywords": [
+    "nodejs",
+    "login"
+  ],
+  "author": "Francisco PDC",
+  "license": "ISC"
+}
