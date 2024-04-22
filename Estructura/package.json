@@ -11,5 +11,9 @@
     "login"
   ],
   "author": "Francisco PDC",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6"
+  }
 }
