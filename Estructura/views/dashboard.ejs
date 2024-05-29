@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>                    
+            <title>Dashboard</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="/style.css">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+                rel="stylesheet">
+        </head>
+        <body>
+            <div class="grid-container">
+                <div class="navbar">
+                    <div class="menu-icon" onclick="openSidebar()">
+                        <span class="material-icons-outlined">home</span>
+                    </div>
+                    <div class="navbar-left">
+                        <p>Bienvenido, <%= username %></p>
+                    </div>
+                    <div class="navbar-right">
+                        <a href="/logout">Cerrar Sesion</a>
+                    </div>
+                </div>
+                <aside id="sidebar">
+                    <div class="sidebar-title">
+                        <div class="sidebar-titulo">  
+                             Ingenieria de Software
+                        </div>
+                        <span class="material-icons-outlined" onclick="closeSidebar()">highlight_off</span>
+                    </div>
+
+                    <ul class="sidebar-list">
+                        <li class="sidebar-list-item"><a href="#" onclick="refrescar()">Dashboard</a></li>
+                    </ul>
+                </aside>
+                <main class="main-container">
+                    <div class="main-title">
+                        <h2>DASHBOARD</h2>
+                    </div>
+
+                    <ul>
+                        <% 
+                        // Filter indicador 'Total remuneraciones.'
+                        const remuneracionesData = otherData.filter(data => data.indicador === 'Total remuneraciones. ');
+
+                        // Filter indicador 'Total remuneraciones.'
+                        const ingresosData = otherData.filter(data => data.indicador === 'Total de ingresos por suministro de bienes y servicios.');
+
+                        // Filter indicador 'Total remuneraciones.'
+                        const gastosData = otherData.filter(data => data.indicador === 'Total de gastos por consumo de bienes y servicios.');
+
+                        // Filter indicador 'Total remuneraciones.'
+                        const produccionData = otherData.filter(data => data.indicador === 'Producción bruta total. ');
+                
+                        // Encontrar mayor de  '2018'
+                        const biggestR2018 = remuneracionesData.reduce((prev, current) => {
+                            return (parseFloat(current['2018']) > parseFloat(prev['2018'])) ? current : prev;
+                        }, remuneracionesData[0]); // Inicializa el primero
+                        
+                        const biggestI2018 = ingresosData.reduce((prev, current) => {
+                            return (parseFloat(current['2018']) > parseFloat(prev['2018'])) ? current : prev;
+                        }, ingresosData[0]); // Inicializa el primero
+
+                        const biggestG2018 = gastosData.reduce((prev, current) => {
+                            return (parseFloat(current['2018']) > parseFloat(prev['2018'])) ? current : prev;
+                        }, gastosData[0]); // Inicializa el primero
+
+                        const biggestP2018 = produccionData.reduce((prev, current) => {
+                            return (parseFloat(current['2018']) > parseFloat(prev['2018'])) ? current : prev;
+                        }, produccionData[0]); // Inicializa el primero
+
+                        const lowestR2018 = remuneracionesData.reduce((prev, current) => {
+                            return (parseFloat(current['2018']) < parseFloat(prev['2018'])) ? current : prev;
+                        }, remuneracionesData[0]);
+
+                        const lowestI2018 = ingresosData.reduce((prev, current) => {
+                            return (parseFloat(current['2018']) < parseFloat(prev['2018'])) ? current : prev;
+                        }, ingresosData[0]);
+
+                        const lowestG2018 = gastosData.reduce((prev, current) => {
+                            return (parseFloat(current['2018']) < parseFloat(prev['2018'])) ? current : prev;
+                        }, gastosData[0]);
+
+                        const lowestP2018 = produccionData.reduce((prev, current) => {
+                            return (parseFloat(current['2018']) < parseFloat(prev['2018'])) ? current : prev;
+                        }, produccionData[0]);
+                        %>
+                    </ul>
+
+                    <div class="cartas-sectores">
+                        <div class="sector">
+                            <div class="interior">
+                                <h3><%= biggestR2018.id %></h3>
+                            </div>
+                            <h4 class="indicador">MAYOR REMUNERACION (2018)</h4>
+                            <div class="valor">
+                                <h1><%= biggestR2018['2018'] %></h1>
+                                <p class="letrita">MDP</p>
+                            </div>
+                        </div>
+
+                        <div class="sector">
+                            <div class="interior">
+                                <h3><%= biggestI2018.id %></h3>
+                            </div>
+                            <h4 class="indicador">MAYORES INGRESOS (2018)</h4>
+                            <div class="valor">
+                                <h1><%= biggestI2018['2018'] %></h1>
+                                <p class="letrita">MDP</p>
+                            </div>
+                        </div>
+
+                        <div class="sector">
+                            <div class="interior">
+                                <h3><%= biggestG2018.id %></h3>
+                            </div>
+                            <h4 class="indicador">MAYOR GASTO (2018)</h4>
+                            <div class="valor">
+                                <h1><%= biggestG2018['2018'] %></h1>
+                                <p class="letrita">MDP</p>
+                            </div>
+                        </div>
+
+                        <div class="sector">
+                            <div class="interior">
+                                <h3><%= biggestP2018.id %></h3>
+                            </div>
+                            <h4 class="indicador">MAYOR PRODUCCION (2018)</h4>
+                            <div class="valor">
+                                <h1><%= biggestP2018['2018'] %></h1>
+                                <p class="letrita">MDP</p>
+                            </div>
+                        </div>
+
+                        <div class="sector">
+                            <div class="interior">
+                                <h3><%= lowestR2018.id %></h3>
+                            </div>
+                            <h4 class="indicador">MENOR REMUNERACION (2018)</h4>
+                            <div class="valor">
+                                <h1><%= lowestR2018['2018'] %></h1>
+                                <p class="letrita">MDP</p>
+                            </div>
+                        </div>
+
+                        <div class="sector">
+                            <div class="interior">
+                                <h3><%= lowestI2018.id %></h3>
+                            </div>
+                            <h4 class="indicador">MENORES INGRESOS (2018)</h4>
+                            <div class="valor">
+                                <h1><%= lowestI2018['2018'] %></h1>
+                                <p class="letrita">MDP</p>
+                            </div>
+                        </div>
+
+                        <div class="sector">
+                            <div class="interior">
+                                <h3><%= lowestG2018.id %></h3>
+                            </div>
+                            <h4 class="indicador">MENOR GASTO (2018)</h4>
+                            <div class="valor">
+                                <h1><%= lowestG2018['2018'] %></h1>
+                                <p class="letrita">MDP</p>
+                            </div>
+                        </div>
+
+                        <div class="sector">
+                            <div class="interior">
+                                <h3><%= lowestP2018.id %></h3>
+                            </div>
+                            <h4 class="indicador">MENOR PRODUCCION (2018)</h4>
+                            <div class="valor">
+                                <h1><%= lowestP2018['2018'] %></h1>
+                                <p class="letrita">MDP</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="graficas">
+                        <div class="cartas-graficas">
+                            <h2 class="grafica-titulo">TOTAL INGRESOS</h2>
+                            <div id="grafica-barra">
+                                <img src="/image1.png">
+                            </div>
+                        </div>
+
+                        <div class="cartas-graficas">
+                            <h2 class="grafica-titulo">PRODUCCION TOTAL (1998)</h2>
+                            <div id="grafica-area">
+                                <img src="/image2.png">
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <script src="/script.js"></script>
+        </body>
+    </html>

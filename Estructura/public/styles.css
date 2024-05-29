@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(0, 0, 0);
+    color: rgb(20, 200, 68);
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.login {
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+button{
+    background-color: #120b9a; /* Green */
+    border: none;
+    color: white;
+    padding: 4px 24px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 13px;
+}
+
+button:hover {
+    background-color: #2016e8;
+}
+
+a:hover {
+    color: white;
+}

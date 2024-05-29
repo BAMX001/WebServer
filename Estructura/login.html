@@ -3,18 +3,17 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,minimum-scale=1">
-		<title>Login</title>
-        <!-- the form awesome library is used to add icons to our form -->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-        <!-- include the stylesheet file -->
-        <link href="/style.css" rel="stylesheet" type="text/css">
+		<title>Inicio de Sesion</title>
+		<link rel="stylesheet" href="src/styles.css">
 	</head>
 	<body>
+		<center>
+
+		
 		<div class="login">
-			<h1>Login</h1>
-			<form action="/dashboard" method="POST">
+			<h1>Iniciar Sesion</h1>
+			<form action="/login" method="POST">
 				<label for="username">
-					<!-- font awesome icon -->
 					<i class="fas fa-user"></i>
 				</label>
 				<input type="text" class="form-control" placeholder="Username" name="userName">
@@ -22,12 +21,11 @@
 					<i class="fas fa-lock"></i>
 				</label>
 				<input type="password" class="form-control" placeholder="Password" name="password">
-				<button type="submit" class="btn btn-primary form-control">Submit</button>
+				<button type="submit" class="btn btn-primary form-control">Login</button>
 			</form>
 		</div>
-        <center>
-            <a href="/">No estas registrado? Registrate aqui.</a>
+            <a href="/">No estas registrado? Registrate aqui.</a> <br>
             <a href="/">No recuerdas tu contrasena? Restablecela.</a>
-        </center>
+		</center>
     </body>
 </html>
